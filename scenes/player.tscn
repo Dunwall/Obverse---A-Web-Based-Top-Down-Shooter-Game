@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://dy1ma3o8iwkok"]
+
+[ext_resource type="Script" uid="uid://dp16hn2bvmt6a" path="res://scenes/player.gd" id="1_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://ccsrv2h2xboms" path="res://asset/actor.png" id="2_dqkch"]
+[ext_resource type="Script" uid="uid://d3dfhojhnhu3o" path="res://scenes/sprite_2d.gd" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://d3yoetcxf60fa" path="res://scenes/gun.tscn" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://cr4p131m06nrg" path="res://scenes/camera_2d.gd" id="5_qlg0r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
+radius = 6.0827627
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dqkch"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 53.94
+initial_velocity_max = 84.71
+gravity = Vector3(0, 98, 0)
+
+[node name="Player" type="CharacterBody2D"]
+modulate = Color(1.6978991, 1.6978991, 1.6978991, 1)
+z_index = 1
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_qhqgy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.39256206, 0.39256206, 0.39256206, 1)
+scale = Vector2(1.1535035, 1.0900879)
+texture = ExtResource("2_dqkch")
+script = ExtResource("2_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u8vuu")
+
+[node name="Gun" parent="." instance=ExtResource("4_dqkch")]
+position = Vector2(5, -5)
+scale = Vector2(0.875, 0.875)
+
+[node name="BloodParticles" type="GPUParticles2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+emitting = false
+amount = 128
+lifetime = 1.14
+one_shot = true
+explosiveness = 0.52
+randomness = 0.42
+process_material = SubResource("ParticleProcessMaterial_dqkch")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2, -4)
+limit_enabled = false
+position_smoothing_enabled = true
+script = ExtResource("5_qlg0r")
+max_offset_distance = null
+return_speed = null

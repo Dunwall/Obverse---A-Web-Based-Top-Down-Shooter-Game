@@ -1,0 +1,453 @@
+{
+	"textures": [
+		{
+			"image": "texture.png",
+			"size": {
+				"w": 626,
+				"h": 177
+			},
+			"sprites": [
+				{
+					"filename": "sprCopyMachine_strip5.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 233,
+						"h": 28
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprBigPoliceTable_strip2.png",
+					"region": {
+						"x": 233,
+						"y": 0,
+						"w": 160,
+						"h": 48
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprCellBed_strip3.png",
+					"region": {
+						"x": 0,
+						"y": 28,
+						"w": 150,
+						"h": 20
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprHotelSuiteSofa.png",
+					"region": {
+						"x": 150,
+						"y": 28,
+						"w": 51,
+						"h": 81
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprCandleTableBurning_strip6.png",
+					"region": {
+						"x": 0,
+						"y": 48,
+						"w": 118,
+						"h": 13
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprBarPoolTable.png",
+					"region": {
+						"x": 118,
+						"y": 48,
+						"w": 32,
+						"h": 68
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprBoss4Sofa.png",
+					"region": {
+						"x": 0,
+						"y": 61,
+						"w": 115,
+						"h": 64
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprRegister.png",
+					"region": {
+						"x": 393,
+						"y": 0,
+						"w": 80,
+						"h": 24
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprDrugMaterial.png",
+					"region": {
+						"x": 473,
+						"y": 0,
+						"w": 80,
+						"h": 23
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprHotelSuiteTub.png",
+					"region": {
+						"x": 553,
+						"y": 0,
+						"w": 73,
+						"h": 46
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprJapaneseTable.png",
+					"region": {
+						"x": 473,
+						"y": 23,
+						"w": 68,
+						"h": 30
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprCandleTable_strip3.png",
+					"region": {
+						"x": 541,
+						"y": 23,
+						"w": 58,
+						"h": 12
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprJukebox_strip3.png",
+					"region": {
+						"x": 393,
+						"y": 24,
+						"w": 65,
+						"h": 25
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprCellToilet_strip2.png",
+					"region": {
+						"x": 458,
+						"y": 24,
+						"w": 42,
+						"h": 15
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprKaraokeCouchBlack.png",
+					"region": {
+						"x": 473,
+						"y": 53,
+						"w": 64,
+						"h": 64
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprDennisCouch.png",
+					"region": {
+						"x": 231,
+						"y": 48,
+						"w": 64,
+						"h": 39
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprGymLocker_strip4.png",
+					"region": {
+						"x": 150,
+						"y": 81,
+						"w": 64,
+						"h": 20
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprBuddhaStatue.png",
+					"region": {
+						"x": 214,
+						"y": 81,
+						"w": 15,
+						"h": 17
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprRestaurantChair.png",
+					"region": {
+						"x": 214,
+						"y": 96,
+						"w": 18,
+						"h": 15
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprBigBed.png",
+					"region": {
+						"x": 150,
+						"y": 101,
+						"w": 60,
+						"h": 57
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprAndersTable.png",
+					"region": {
+						"x": 115,
+						"y": 117,
+						"w": 43,
+						"h": 27
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprHighballCurtain.png",
+					"region": {
+						"x": 142,
+						"y": 117,
+						"w": 60,
+						"h": 6
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprAndersBed.png",
+					"region": {
+						"x": 295,
+						"y": 48,
+						"w": 46,
+						"h": 60
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprDennisBed.png",
+					"region": {
+						"x": 231,
+						"y": 87,
+						"w": 46,
+						"h": 60
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprHighballChairBig.png",
+					"region": {
+						"x": 210,
+						"y": 114,
+						"w": 18,
+						"h": 14
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprEuroTrash_strip2.png",
+					"region": {
+						"x": 210,
+						"y": 128,
+						"w": 26,
+						"h": 12
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprWineRack.png",
+					"region": {
+						"x": 355,
+						"y": 48,
+						"w": 22,
+						"h": 53
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprFloorTable.png",
+					"region": {
+						"x": 291,
+						"y": 94,
+						"w": 52,
+						"h": 52
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sprEuroPillar.png",
+					"region": {
+						"x": 222,
+						"y": 133,
+						"w": 40,
+						"h": 40
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7",
+		"format": "RGBA8888",
+	}
+}

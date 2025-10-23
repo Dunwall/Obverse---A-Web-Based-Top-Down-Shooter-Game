@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://cduxg04oca11l"]
+
+[ext_resource type="PackedScene" uid="uid://dy1ma3o8iwkok" path="res://scenes/player.tscn" id="1_5v7nx"]
+[ext_resource type="Texture2D" uid="uid://brw8uue5js7g4" path="res://asset/sprDoorH.png" id="1_ekmla"]
+[ext_resource type="Script" uid="uid://d2kf5to84bpd0" path="res://scenes/player2.gd" id="3_ip4aq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5v7nx"]
+friction = 0.0
+bounce = 0.51
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v7nx"]
+size = Vector2(34, 11)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ekmla"]
+radius = 3.0
+
+[node name="DoorTest" type="Node2D" groups=["Player"]]
+position = Vector2(110, 59)
+
+[node name="Player2" parent="." instance=ExtResource("1_5v7nx")]
+position = Vector2(26, 64)
+script = ExtResource("3_ip4aq")
+
+[node name="Door" type="Node2D" parent="."]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Door"]
+physics_material_override = SubResource("PhysicsMaterial_5v7nx")
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 10
+angular_damp = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="Door/RigidBody2D"]
+position = Vector2(16, 0)
+texture = ExtResource("1_ekmla")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/RigidBody2D"]
+position = Vector2(17, 0.5)
+shape = SubResource("RectangleShape2D_5v7nx")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Door/RigidBody2D"]
+node_a = NodePath("../../StaticBody2D")
+node_b = NodePath("..")
+angular_limit_enabled = true
+angular_limit_lower = -1.5707964
+angular_limit_upper = 1.5707964
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Door"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Door/StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/StaticBody2D"]
+shape = SubResource("CircleShape2D_ekmla")

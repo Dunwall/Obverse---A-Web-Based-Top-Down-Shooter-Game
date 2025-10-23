@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbf7tnql01pga"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jxe34"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5upi"]
+radius = 2.0
+
+[node name="DoorPivot" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_jxe34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m5upi")

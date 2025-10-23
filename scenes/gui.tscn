@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc4k3gnlcosfo"]
+
+[ext_resource type="Script" uid="uid://dql6rf3jd3je3" path="res://scenes/ammo_count.gd" id="1_efmwq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_efmwq"]
+shadow_size = 3
+shadow_color = Color(0.8921665, 0.07016479, 0.6476321, 0.64100003)
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 421.0
+offset_bottom = 221.0
+
+[node name="AmmoCount" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "16/16 Rnds"
+label_settings = SubResource("LabelSettings_efmwq")
+horizontal_alignment = 2
+script = ExtResource("1_efmwq")

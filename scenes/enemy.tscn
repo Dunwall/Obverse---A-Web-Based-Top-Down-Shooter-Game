@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bghkokcl4edh6"]
+
+[ext_resource type="Script" uid="uid://cjqc63l26ag6n" path="res://scenes/enemy.gd" id="1_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://ccsrv2h2xboms" path="res://asset/actor.png" id="2_c4w8v"]
+[ext_resource type="Script" uid="uid://d3dfhojhnhu3o" path="res://scenes/sprite_2d.gd" id="3_xwavj"]
+[ext_resource type="Material" uid="uid://h0g0v1m7rvnc" path="res://blood_particles.tres" id="5_c4w8v"]
+[ext_resource type="PackedScene" uid="uid://ceuriahd7cvrt" path="res://scenes/enem_gun.tscn" id="5_xwavj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4w8v"]
+radius = 4.1231055
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_5uy6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(2.98023e-08, 2.98023e-08)
+scale = Vector2(0.942871, 0.938477)
+texture = ExtResource("2_c4w8v")
+script = ExtResource("3_xwavj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_c4w8v")
+
+[node name="BloodParticles" type="GPUParticles2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+emitting = false
+amount = 320
+lifetime = 0.58
+one_shot = true
+explosiveness = 0.56
+randomness = 0.47
+process_material = ExtResource("5_c4w8v")
+
+[node name="LoSRay" type="RayCast2D" parent="."]
+target_position = Vector2(0, 41)
+
+[node name="EnemGun" parent="." instance=ExtResource("5_xwavj")]
+position = Vector2(3, -4)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

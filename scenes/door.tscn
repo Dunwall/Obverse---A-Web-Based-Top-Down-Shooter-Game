@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfgp5m30hty3i"]
+
+[ext_resource type="Script" uid="uid://bvrbbmuwrvmyc" path="res://scenes/door.gd" id="1_83dcw"]
+[ext_resource type="Texture2D" uid="uid://brw8uue5js7g4" path="res://asset/walls/sprDoorH.png" id="2_83dcw"]
+[ext_resource type="PackedScene" uid="uid://bbf7tnql01pga" path="res://scenes/door_pivot.tscn" id="2_uvdjg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_83dcw"]
+friction = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpvv5"]
+size = Vector2(30, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83dcw"]
+size = Vector2(30, 6)
+
+[node name="Door" type="Node2D"]
+position = Vector2(90, 53)
+
+[node name="Hinge" parent="." instance=ExtResource("2_uvdjg")]
+collision_mask = 0
+
+[node name="Door" type="RigidBody2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+collision_mask = 0
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_83dcw")
+gravity_scale = 0.0
+script = ExtResource("1_83dcw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Door"]
+position = Vector2(14.500002, 0)
+scale = Vector2(0.9062501, 1)
+texture = ExtResource("2_83dcw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2(15, 0)
+shape = SubResource("RectangleShape2D_hpvv5")
+
+[node name="PushZone" type="Area2D" parent="Door"]
+light_mask = 3
+visibility_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/PushZone"]
+position = Vector2(15, 0)
+shape = SubResource("RectangleShape2D_83dcw")
+debug_color = Color(0.9769748, 0, 0.41136557, 0.41960785)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Door"]
+node_a = NodePath("../../Hinge")
+node_b = NodePath("..")
+disable_collision = false
+angular_limit_enabled = true
+angular_limit_lower = -1.5707964
+angular_limit_upper = 1.5707964

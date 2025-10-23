@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfgp5m30hty3i"]
+
+[ext_resource type="Script" uid="uid://bvrbbmuwrvmyc" path="res://scenes/door.gd" id="1_83dcw"]
+[ext_resource type="Texture2D" uid="uid://djc6u7316hseq" path="res://asset/door.png" id="1_hpvv5"]
+[ext_resource type="Script" uid="uid://cd8dy6y6yac3r" path="res://scenes/frame.gd" id="1_uvdjg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83dcw"]
+radius = 2.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uvdjg"]
+friction = 0.5
+bounce = 0.51
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpvv5"]
+size = Vector2(26, 4)
+
+[node name="Door" type="StaticBody2D"]
+light_mask = 0
+visibility_layer = 2
+script = ExtResource("1_83dcw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_83dcw")
+
+[node name="Frame" type="RigidBody2D" parent="."]
+light_mask = 3
+visibility_layer = 2
+collision_layer = 3
+collision_mask = 3
+mass = 0.004
+physics_material_override = SubResource("PhysicsMaterial_uvdjg")
+gravity_scale = 0.0
+angular_damp = 5.771
+script = ExtResource("1_uvdjg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Frame"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_hpvv5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Frame"]
+position = Vector2(11, 0)
+scale = Vector2(1.4375, 1.125)
+texture = ExtResource("1_hpvv5")
+
+[node name="RayCast2D" type="RayCast2D" parent="Frame"]
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("..")
+node_b = NodePath("../Frame")
+angular_limit_lower = -1.5707964
+angular_limit_upper = 1.5707964

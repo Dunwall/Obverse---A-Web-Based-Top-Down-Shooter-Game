@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0k0053vlrhft"]
+
+[ext_resource type="Script" uid="uid://uxhjjlhcc8re" path="res://room_button.gd" id="1_fgkus"]
+[ext_resource type="PackedScene" uid="uid://bw44xxsop5r1o" path="res://Rooms/room0.tscn" id="2_s4lrb"]
+[ext_resource type="PackedScene" uid="uid://dfdyqcuarpdbm" path="res://Rooms/room.tscn" id="2_sa3yf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v6p8y"]
+font_size = 18
+font_color = Color(1, 0.56201816, 1, 1)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -17.5
+offset_right = 32.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Obverse
+Debug Menu"
+label_settings = SubResource("LabelSettings_v6p8y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="RoomButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("1_fgkus")
+room = ExtResource("2_s4lrb")
+
+[node name="RoomButton2" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("1_fgkus")
+room = ExtResource("2_sa3yf")

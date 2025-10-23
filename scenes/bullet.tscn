@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc2hvaqg7tlft"]
+
+[ext_resource type="Script" uid="uid://c4s66pf4w8ray" path="res://scenes/bullet.gd" id="1_y25gk"]
+[ext_resource type="Texture2D" uid="uid://dylx4cqs1vudw" path="res://asset/bulletNew.png" id="2_l5glv"]
+[ext_resource type="AudioStream" uid="uid://c1e1fwtxo61ii" path="res://sounds/wall-hit-1-100717.mp3" id="3_l5glv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
+radius = 2.0
+
+[node name="bullet" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_y25gk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.1920929e-07, 2.3841858e-07)
+rotation = 1.562548
+scale = Vector2(0.25595158, 0.29750547)
+texture = ExtResource("2_l5glv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y25gk")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_l5glv")

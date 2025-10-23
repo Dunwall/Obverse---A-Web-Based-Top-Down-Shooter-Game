@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bghkokcl4edh6"]
+
+[ext_resource type="Script" uid="uid://cjqc63l26ag6n" path="res://scenes/enemy.gd" id="1_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://ccsrv2h2xboms" path="res://asset/actor.png" id="2_c4w8v"]
+[ext_resource type="Script" uid="uid://d3dfhojhnhu3o" path="res://scenes/sprite_2d.gd" id="3_xwavj"]
+[ext_resource type="PackedScene" uid="uid://d3yoetcxf60fa" path="res://scenes/gun.tscn" id="4_nenq2"]
+[ext_resource type="Material" uid="uid://h0g0v1m7rvnc" path="res://blood_particles.tres" id="5_c4w8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavj"]
+size = Vector2(14, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nenq2"]
+radius = 18.027756
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_5uy6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(2.98023e-08, 2.98023e-08)
+scale = Vector2(0.942871, 0.938477)
+texture = ExtResource("2_c4w8v")
+script = ExtResource("3_xwavj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource("RectangleShape2D_xwavj")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Gun" parent="." instance=ExtResource("4_nenq2")]
+
+[node name="BloodParticles" type="GPUParticles2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+emitting = false
+amount = 320
+lifetime = 0.58
+one_shot = true
+explosiveness = 0.56
+randomness = 0.47
+process_material = ExtResource("5_c4w8v")
+
+[node name="AI" type="Node2D" parent="."]
+
+[node name="PlayerDetectionZone" type="Area2D" parent="AI"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/PlayerDetectionZone"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_nenq2")
+
+[connection signal="body_entered" from="AI/PlayerDetectionZone" to="AI" method="_on_player_detection_zone_body_entered"]
