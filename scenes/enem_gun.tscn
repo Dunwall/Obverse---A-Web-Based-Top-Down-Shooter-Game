@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://ceuriahd7cvrt"]
+[gd_scene load_steps=8 format=3 uid="uid://ceuriahd7cvrt"]
 
-[ext_resource type="Texture2D" uid="uid://cseu744v6rwil" path="res://asset/gun.png" id="1_sgci6"]
 [ext_resource type="Script" uid="uid://deixqvuipu7a1" path="res://scenes/gun.gd" id="2_5xx8l"]
 [ext_resource type="AudioStream" uid="uid://ce580dmd32cbe" path="res://sounds/8bit_gunloop_explosion.wav" id="2_xu814"]
 [ext_resource type="AudioStream" uid="uid://bdlpbjy7kryqo" path="res://sounds/clipload1.wav" id="3_esxet"]
@@ -45,7 +44,6 @@ _data = {
 
 [node name="EnemGun" type="Sprite2D"]
 position = Vector2(4, 0)
-texture = ExtResource("1_sgci6")
 offset = Vector2(3, 0)
 script = ExtResource("2_5xx8l")
 

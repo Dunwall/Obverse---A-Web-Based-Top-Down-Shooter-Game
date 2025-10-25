@@ -3460,10 +3460,10 @@ navigation_polygon = SubResource("NavigationPolygon_6wpiv")
 
 [node name="Background" type="ColorRect" parent="."]
 z_index = -2
-offset_left = -3.0
-offset_top = -244.0
-offset_right = 704.0
-offset_bottom = 253.0
+offset_left = -369.0
+offset_top = -605.0
+offset_right = 1067.0
+offset_bottom = 750.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
