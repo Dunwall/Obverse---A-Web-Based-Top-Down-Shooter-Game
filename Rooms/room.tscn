@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://qh776p4kiqk2" path="res://Rooms/restart_ui.tscn" id="2_24s3j"]
 [ext_resource type="PackedScene" uid="uid://bf88xckc554hw" path="res://Rooms/start_screen.tscn" id="2_wx7pv"]
 [ext_resource type="Texture2D" uid="uid://cvr88oijsp2i5" path="res://asset/walls/wallWhy.png" id="3_2ydqr"]
-[ext_resource type="PackedScene" uid="uid://byoywwnsahe4l" path="res://scenes/PauseMenu.tscn" id="3_lk7to"]
 [ext_resource type="PackedScene" uid="uid://dy1ma3o8iwkok" path="res://scenes/player.tscn" id="3_qhskg"]
 [ext_resource type="Texture2D" uid="uid://cgtqacy54mykc" path="res://asset/walls/spritesheet.png" id="3_t2uij"]
 [ext_resource type="Texture2D" uid="uid://dy3rpviupx150" path="res://asset/tiles.png" id="4_jdh4g"]
@@ -16,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d23en3dbloxr4" path="res://asset/walls/wallsig.png" id="6_6wpiv"]
 [ext_resource type="PackedScene" uid="uid://bbf7tnql01pga" path="res://scenes/door_pivot.tscn" id="6_jdh4g"]
 [ext_resource type="Texture2D" uid="uid://ik46oy6ri3fs" path="res://asset/Furniture/test.png" id="9_24s3j"]
+[ext_resource type="PackedScene" uid="uid://4n4apw8vrdpd" path="res://Rooms/stupid.tscn" id="17_c30gu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6wpiv"]
 vertices = PackedVector2Array(207.5, -169.5, 207.5, -152.5, 95.5, -152.5, 62.5, -169.5, 62.5, 135.5, 95.5, -89.5, 126.5, -89.5, 126.5, -121.5, 303.5, -121.5, 303.5, -40.5, 255.5, -40.5, 255.5, -9.5, 303.5, -9.5, 303.5, 38.5, 382.5, 38.5, 382.5, -9.5, 398.5, -9.5, 398.5, -40.5, 334.5, -40.5, 334.5, -169.5, 431.5, -169.5, 431.5, -105.5, 511.5, -105.5, 511.5, -73.5, 542.5, -73.5, 542.5, -105.5, 575.5, -105.5, 575.5, 22.5, 606.5, -136.5, 542.5, -136.5, 542.5, -169.5, 655.5, -169.5, 655.5, 71.5, 606.5, 22.5, 606.5, 71.5, 606.5, 39.5, 575.5, 39.5, 575.5, 71.5, 510.5, 71.5, 510.5, -9.5, 542.5, -9.5, 542.5, -56.5, 511.5, -56.5, 511.5, -40.5, 415.5, -40.5, 415.5, -9.5, 479.5, -9.5, 479.5, 71.5, 255.5, 102.5, 479.5, 102.5, 479.5, 134.5, 510.5, 134.5, 510.5, 102.5, 575.5, 102.5, 575.5, 135.5, 543.5, 135.5, 543.5, 183.5, 510.5, 183.5, 510.5, 151.5, 479.5, 151.5, 479.5, 183.5, 142.5, 183.5, 142.5, 102.5, 238.5, 102.5, 255.5, 71.5, 238.5, 71.5, 190.5, 71.5, 190.5, -9.5, 238.5, -9.5, 238.5, -40.5, 126.5, -40.5, 126.5, -72.5, 95.5, -9.5, 159.5, -9.5, 159.5, 71.5, 111.5, 71.5, 111.5, 135.5, 95.5, -72.5, 351.5, 7.5, 334.5, 7.5, 334.5, -9.5, 351.5, -9.5)
@@ -3448,9 +3448,7 @@ point_count = 5
 position = Vector2(-101, 59)
 script = ExtResource("1_2eq1m")
 
-[node name="StartScreen" parent="." instance=ExtResource("2_wx7pv")]
-
-[node name="pause_menu" parent="." instance=ExtResource("3_lk7to")]
+[node name="Menu" parent="." instance=ExtResource("2_wx7pv")]
 
 [node name="RestartUI" parent="." instance=ExtResource("2_24s3j")]
 
@@ -3615,3 +3613,5 @@ position = Vector2(521, 51)
 [node name="Enemy" parent="Paths/Path2D5" instance=ExtResource("2_2eq1m")]
 position = Vector2(555.99994, 47)
 rotation = -1.5693876
+
+[node name="PauseMenu" parent="." instance=ExtResource("17_c30gu")]

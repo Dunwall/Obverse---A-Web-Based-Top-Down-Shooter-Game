@@ -1,8 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bf88xckc554hw"]
+[gd_scene load_steps=18 format=3 uid="uid://bf88xckc554hw"]
 
 [ext_resource type="FontFile" uid="uid://dyncanksy6ac0" path="res://asset/Font/justice/justicecondout.ttf" id="1_hbr44"]
 [ext_resource type="Script" uid="uid://dmta3hbbv602f" path="res://Rooms/start_screen.gd" id="1_iey71"]
 [ext_resource type="FontFile" uid="uid://d07ue3kgw4vdq" path="res://asset/Font/disco_duck/discoducksemital.ttf" id="1_pgne7"]
+[ext_resource type="FontFile" uid="uid://djk7fuiv1b6g5" path="res://asset/Font/justice/justice.ttf" id="4_cp5gm"]
+[ext_resource type="Script" uid="uid://bwf51p0dom0vu" path="res://Rooms/audio_control.gd" id="5_7w1qh"]
+[ext_resource type="AudioStream" uid="uid://c53wsudvxnhr3" path="res://sounds/kanye_west_john_mayer_-_bittersweet_poetry_(mp3.pm).mp3" id="6_7w1qh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iey71"]
 bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
@@ -28,6 +31,14 @@ bg_color = Color(11.715372, 11.715372, 11.715372, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65w5g"]
 bg_color = Color(11.715372, 11.715372, 11.715372, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cp5gm"]
+color = Color(1, 1, 1, 1)
+thickness = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_esamu"]
+color = Color(0.18039216, 0.4117647, 1, 1)
+thickness = 3
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -57,7 +68,8 @@ offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainButtons" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -72,7 +84,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.024747126, 0.43530545, 1.7100499, 1)
@@ -88,7 +100,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_v0ebb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iey71")
 text = "Start Game"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.17860496, 0.4101248, 1, 1)
@@ -104,7 +116,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_1to8t")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iey71")
 text = "Options"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Button3" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.18039216, 0.4117647, 1, 1)
@@ -136,6 +148,85 @@ theme_override_fonts/font = ExtResource("1_pgne7")
 theme_override_font_sizes/font_size = 50
 text = "Obverse"
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_7w1qh")
+autoplay = true
+bus = &"Music"
+
+[node name="Options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 16.0
+offset_right = 31.0
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.54509807, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_cp5gm")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+
+[node name="Back" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -41.0
+offset_right = 28.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.18039216, 0.4117647, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8, 0, 0.8901961, 1)
+theme_override_colors/font_hover_color = Color(0.8, 0, 0.8901961, 1)
+theme_override_fonts/font = ExtResource("1_hbr44")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_iey71")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_d7m8a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_65w5g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1to8t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iey71")
+text = "Back"
+
+[node name="AudioControl" type="HSlider" parent="Options"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 111.0
+offset_top = -40.0
+offset_right = -100.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_cp5gm")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_esamu")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_esamu")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_7w1qh")
+audio_bus_name = "Music"
+
+[connection signal="pressed" from="MainButtons/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainButtons/Button2" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainButtons/Button3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Options/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Options/AudioControl" to="Options/AudioControl" method="_on_value_changed"]
