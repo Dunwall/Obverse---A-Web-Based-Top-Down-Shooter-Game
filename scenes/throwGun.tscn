@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://b42wt2sguwd0s"]
+
+[ext_resource type="Texture2D" uid="uid://cseu744v6rwil" path="res://asset/gun.png" id="1_2omjc"]
+[ext_resource type="Script" uid="uid://deixqvuipu7a1" path="res://scenes/gun.gd" id="2_5pe66"]
+[ext_resource type="AudioStream" uid="uid://ce580dmd32cbe" path="res://sounds/8bit_gunloop_explosion.wav" id="3_eosxi"]
+[ext_resource type="AudioStream" uid="uid://bdlpbjy7kryqo" path="res://sounds/clipload1.wav" id="4_i8yw7"]
+[ext_resource type="AudioStream" uid="uid://c68xuyexf7e66" path="res://sounds/dry.wav" id="5_5rc8m"]
+
+[sub_resource type="Animation" id="Animation_haq8l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6b133"]
+resource_name = "shoot"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1.0352648, 1),
+"update": 0,
+"values": [Vector2(-4, 0), Vector2(3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bmp1f"]
+_data = {
+&"RESET": SubResource("Animation_haq8l"),
+&"shoot": SubResource("Animation_6b133")
+}
+
+[node name="Gun" type="Sprite2D"]
+show_behind_parent = true
+position = Vector2(4, 0)
+texture = ExtResource("1_2omjc")
+offset = Vector2(3, 0)
+script = ExtResource("2_5pe66")
+metadata/_edit_vertical_guides_ = [-63.0]
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(10, 0)
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_eosxi")
+
+[node name="Reload" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_i8yw7")
+
+[node name="Dry" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5rc8m")
+
+[node name="FireRate" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="ReloadTime" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bmp1f")
+}
+
+[connection signal="timeout" from="ReloadTime" to="." method="_on_reload_time_timeout"]

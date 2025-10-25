@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bf88xckc554hw"]
+[gd_scene load_steps=21 format=3 uid="uid://bf88xckc554hw"]
 
 [ext_resource type="FontFile" uid="uid://dyncanksy6ac0" path="res://asset/Font/justice/justicecondout.ttf" id="1_hbr44"]
 [ext_resource type="Script" uid="uid://dmta3hbbv602f" path="res://Rooms/start_screen.gd" id="1_iey71"]
@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://djk7fuiv1b6g5" path="res://asset/Font/justice/justice.ttf" id="4_cp5gm"]
 [ext_resource type="Script" uid="uid://bwf51p0dom0vu" path="res://Rooms/audio_control.gd" id="5_7w1qh"]
 [ext_resource type="AudioStream" uid="uid://c53wsudvxnhr3" path="res://sounds/kanye_west_john_mayer_-_bittersweet_poetry_(mp3.pm).mp3" id="6_7w1qh"]
+[ext_resource type="FontFile" uid="uid://bt3d7b80qiylc" path="res://asset/Font/justice/justice3d.ttf" id="7_v0ebb"]
+[ext_resource type="Script" uid="uid://bn4v2x8y1s77p" path="res://Rooms/fullscreen_control.gd" id="8_d7m8a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iey71"]
 bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
@@ -32,6 +34,9 @@ bg_color = Color(11.715372, 11.715372, 11.715372, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65w5g"]
 bg_color = Color(11.715372, 11.715372, 11.715372, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_v0ebb"]
+font = ExtResource("7_v0ebb")
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_cp5gm"]
 color = Color(1, 1, 1, 1)
 thickness = 3
@@ -56,7 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.99999994, 0.29185763, 0.67526335, 1)
+color = Color(0.6386737, 3.3210217e-06, 0.4017052, 1)
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -166,10 +171,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -35.0
+offset_left = -67.5
 offset_top = 16.0
-offset_right = 31.0
-offset_bottom = 39.0
+offset_right = 63.5
+offset_bottom = 51.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.54509807, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -184,9 +189,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -25.0
-offset_top = -41.0
-offset_right = 28.0
+offset_left = -30.0
+offset_top = -46.0
+offset_right = 33.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -204,18 +209,33 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_1to8t")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iey71")
 text = "Back"
 
-[node name="AudioControl" type="HSlider" parent="Options"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 111.0
-offset_top = -40.0
-offset_right = -100.0
-offset_bottom = -24.0
+offset_left = 80.0
+offset_top = -27.0
+offset_right = -69.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 116
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Volume"
+label_settings = SubResource("LabelSettings_v0ebb")
+
+[node name="AudioControl" type="HSlider" parent="Options/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 theme_override_styles/slider = SubResource("StyleBoxLine_cp5gm")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_esamu")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_esamu")
@@ -225,8 +245,15 @@ value = 1.0
 script = ExtResource("5_7w1qh")
 audio_bus_name = "Music"
 
+[node name="FullscreenControl" type="CheckButton" parent="Options/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_v0ebb")
+text = "Full Screen"
+script = ExtResource("8_d7m8a")
+
 [connection signal="pressed" from="MainButtons/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainButtons/Button2" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainButtons/Button3" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Options/Back" to="." method="_on_back_pressed"]
-[connection signal="value_changed" from="Options/AudioControl" to="Options/AudioControl" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/VBoxContainer/HBoxContainer/AudioControl" to="Options/VBoxContainer/HBoxContainer/AudioControl" method="_on_value_changed"]
+[connection signal="toggled" from="Options/VBoxContainer/FullscreenControl" to="Options/VBoxContainer/FullscreenControl" method="_on_toggled"]

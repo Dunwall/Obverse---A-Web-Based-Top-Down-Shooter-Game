@@ -3503,7 +3503,7 @@ rotation = -0.010159781
 position = Vector2(10, 9)
 
 [node name="LightDefault1" type="PointLight2D" parent="Lights"]
-position = Vector2(317.11462, 0.036831856)
+position = Vector2(324, 3.9999971)
 rotation = 0.0073976866
 scale = Vector2(10.414314, 6.9708767)
 texture = SubResource("GradientTexture2D_jxe34")
