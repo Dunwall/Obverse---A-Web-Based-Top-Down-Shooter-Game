@@ -36,12 +36,22 @@ var _search_timer: float = 0.0
 var _vision_timer: float = 0.0
 var _player_in_sight: bool = false
 
+# Death sprites array
+var death_sprites := [
+	preload("res://asset/Enemy/death_pose_0.png"),
+	preload("res://asset/Enemy/death_pose_1.png"),
+	preload("res://asset/Enemy/death_pose_2.png")
+]
+
+
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 var navigation: NavigationRegion2D
+@onready var animated_sprite: AnimatedSprite2D = $Character
+var _is_shooting: bool = false
 
 func _ready() -> void:
 	add_to_group("enemies")
-
+	animated_sprite.sprite_frames = animated_sprite.sprite_frames.duplicate(true)
 	if has_node("EnemGun"):
 		_gun = get_node("EnemGun")
 	else:
@@ -129,6 +139,9 @@ func _physics_process(delta: float) -> void:
 		_patrolling = true
 		if _path_follow:
 			patrol(delta)
+			if animated_sprite.animation != "walk_enemy" or not animated_sprite.is_playing():
+				animated_sprite.play("walk_enemy")
+
 		else:
 			velocity = Vector2.ZERO
 			move_and_slide()
@@ -136,6 +149,10 @@ func _physics_process(delta: float) -> void:
 
 	# --- CHASE/SHOOT MODE ---
 	_patrolling = false
+
+	if can_chase and not _is_shooting:
+		if animated_sprite.animation != "walk_enemy" or not animated_sprite.is_playing():
+			animated_sprite.play("walk_enemy")
 
 	if distance > 2.0:
 		rotation = to_player.angle()
@@ -180,9 +197,16 @@ func _physics_process(delta: float) -> void:
 	_shoot_timer -= delta
 	if distance <= shoot_range and _can_see_player:
 		if _shoot_timer <= 0.0 and _gun and _gun.has_method("shoot_in_direction"):
-			_gun.global_rotation = global_rotation
-			_gun.shoot_in_direction(Vector2.RIGHT.rotated(_gun.global_rotation))
-			_shoot_timer = fire_delay
+			_is_shooting = true
+			animated_sprite.play("shoot_enemy")
+
+		_gun.global_rotation = global_rotation
+		_gun.shoot_in_direction(Vector2.RIGHT.rotated(_gun.global_rotation))
+		_shoot_timer = fire_delay
+
+		await animated_sprite.animation_finished
+		_is_shooting = false
+
 
 func _on_noise_emitted(shot_pos: Vector2, radius: float) -> void:
 	var distance_to_shot = global_position.distance_to(shot_pos)
@@ -223,19 +247,35 @@ func take_damage(amount: int) -> void:
 	print("[Enemy] ", name, " took ", amount, " damage and died!")
 	die()
 
+@onready var corpse_sprite: Sprite2D = $CorpseSprite
+
 func die() -> void:
 	if _is_dead:
 		return
 	_is_dead = true
-	visible = false
-	set_collision_layer_value(3, false)
-	set_collision_mask_value(1, false)
-	set_collision_mask_value(2, false)
+
+	# Disable logic/collisions
 	set_physics_process(false)
 	set_process(false)
 	remove_from_group("enemies")
-	await get_tree().create_timer(0.1).timeout
+	set_collision_layer_value(3, false)
+	set_collision_mask_value(1, false)
+	set_collision_mask_value(2, false)
+
+	# Randomize static corpse sprite (safe now)
+	if animated_sprite:
+		animated_sprite.stop()
+		var random_index = randi() % death_sprites.size()
+		var frames := SpriteFrames.new()
+		frames.add_frame("dead", death_sprites[random_index])
+		animated_sprite.sprite_frames = frames
+		animated_sprite.play("dead")
+
+	rotation += randf_range(-0.3, 0.3)
+
+	await get_tree().create_timer(2.0).timeout
 	queue_free()
+
 	
 '''func _draw():
 	if agent and agent.get_current_navigation_path().size() > 0:

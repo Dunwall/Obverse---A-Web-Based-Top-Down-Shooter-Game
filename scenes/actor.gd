@@ -27,9 +27,9 @@ func die() -> void:
 		sprite.hide()
 	
 	# Spawn blood splatter
-	var inst: BloodSplatter = BLOOD_SPLATTER.instantiate()
-	get_tree().current_scene.add_child(inst)
-	inst.start(global_position)
+	#var inst: BloodSplatter = BLOOD_SPLATTER.instantiate()
+	#get_tree().current_scene.add_child(inst)
+	#inst.start(global_position)
 	
 	# Show restart UI immediately
 	var game_over_ui = get_tree().current_scene.get_node("RestartUI")

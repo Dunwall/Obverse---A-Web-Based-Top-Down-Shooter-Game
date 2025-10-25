@@ -1,9 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://bghkokcl4edh6"]
+[gd_scene load_steps=17 format=3 uid="uid://bghkokcl4edh6"]
 
 [ext_resource type="Script" uid="uid://cjqc63l26ag6n" path="res://scenes/enemy.gd" id="1_5uy6h"]
 [ext_resource type="Texture2D" uid="uid://cr3mrhme3e611" path="res://asset/Enemy/enemy2.png" id="2_5uy6h"]
 [ext_resource type="Material" uid="uid://h0g0v1m7rvnc" path="res://blood_particles.tres" id="5_c4w8v"]
 [ext_resource type="PackedScene" uid="uid://ceuriahd7cvrt" path="res://scenes/enem_gun.tscn" id="5_xwavj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtq4b"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(244, 340, 61, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
 atlas = ExtResource("2_5uy6h")
@@ -45,13 +49,21 @@ region = Rect2(1288, 312, 56, 26)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wtq4b")
+}],
+"loop": true,
+"name": &"death_enemy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5uy6h")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_otmr2")
 }],
 "loop": true,
-"name": &"enem_attack",
+"name": &"shoot_enemy",
 "speed": 20.0
 }, {
 "frames": [{
@@ -77,7 +89,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_w8i8w")
 }],
 "loop": true,
-"name": &"enem_walk",
+"name": &"walk_enemy",
 "speed": 10.0
 }]
 
@@ -89,16 +101,15 @@ collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_5uy6h")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(6, -1)
-scale = Vector2(0.55133927, 0.686899)
+[node name="Character" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, -1.0000002)
+scale = Vector2(0.6506696, 0.8728613)
 sprite_frames = SubResource("SpriteFrames_otmr2")
-animation = &"enem_attack"
-frame_progress = 0.8662112
+animation = &"death_enemy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(1, 0)
+position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_wtq4b")
 
 [node name="BloodParticles" type="GPUParticles2D" parent="."]
@@ -118,3 +129,6 @@ target_position = Vector2(0, 41)
 position = Vector2(12, 0)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CorpseSprite" type="Sprite2D" parent="."]
+visible = false

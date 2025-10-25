@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const SHELL_CASING: PackedScene = preload("res://scenes/shell_casing.tscn")
 const SPEED: int = 600
-const DAMAGE: int = 1
+const DAMAGE: int = 1  # Always 1 since it's one-shot kill
 const IMPACT: PackedScene = preload("res://scenes/blood_splatter.tscn")
 const HIT_WALL: AudioStream = preload("res://sounds/wall-hit-1-100717.mp3")
 const HIT_FLESH: AudioStream = preload("res://sounds/080998_bullet-hit-39870.mp3")
@@ -25,15 +25,13 @@ func _physics_process(delta: float) -> void:
 		
 		elif collider is Enemy:
 			print("Bullet hit Enemy: ", collider.name)
-			# Enemy should have a method to take damage
+			# One-shot kill - always deal 1 damage (which kills since hp = 1)
 			if collider.has_method("take_damage"):
-				collider.take_damage(DAMAGE)
+				collider.take_damage(1)
 			elif collider.has_method("heal_hurt"):
-				collider.heal_hurt(-DAMAGE)
+				collider.heal_hurt(-1)
 			
-			var inst = IMPACT.instantiate()
-			get_tree().current_scene.add_child(inst)
-			inst.start(global_position)
+			#inst.start(global_position)
 			
 			if _hit:
 				_hit.stream = HIT_FLESH
@@ -41,7 +39,8 @@ func _physics_process(delta: float) -> void:
 		
 		elif collider is Actor:
 			print("Bullet hit Actor (Player): ", collider.name)
-			collider.heal_hurt(-DAMAGE)
+			# One-shot kill for player too
+			collider.heal_hurt(-1)
 			print("Actor HP after hit: ", collider.hp)
 			
 			var inst = IMPACT.instantiate()
@@ -66,21 +65,11 @@ func start(start_pos: Vector2, direction: Vector2, is_enemy_bullet: bool = false
 	velocity = direction * SPEED
 	friendly = is_enemy_bullet
 	
-	# FIXED: Set collision mask to detect multiple layers
 	if friendly:
-		# Enemy bullets: detect walls (layer 1) and player (layer 2)
 		set_collision_mask_value(1, true)  # walls
 		set_collision_mask_value(2, true)  # player
 		set_collision_mask_value(3, false) # NOT enemies
 	else:
-		# Player bullets: detect walls (layer 1) and enemies (layer 3)
 		set_collision_mask_value(1, true)  # walls
 		set_collision_mask_value(2, false) # NOT player
 		set_collision_mask_value(3, true)  # enemies
-	
-	'''var inst = SHELL_CASING.instantiate()
-	if inst.has_method("start"):
-		inst.start(start_pos)
-	get_tree().current_scene.add_child(inst)'''
-
-	
