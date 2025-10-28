@@ -1,6 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc4k3gnlcosfo"]
+[gd_scene load_steps=7 format=3 uid="uid://cc4k3gnlcosfo"]
 
 [ext_resource type="Script" uid="uid://dql6rf3jd3je3" path="res://scenes/ammo_count.gd" id="1_efmwq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efmwq"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mfius"]
+shadow_color = Color(0.89411765, 0.07058824, 0.64705884, 0.6392157)
+
+[sub_resource type="Theme" id="Theme_ynd5l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8iy7"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_efmwq"]
 shadow_size = 3
@@ -8,17 +19,53 @@ shadow_color = Color(0.8921665, 0.07016479, 0.6476321, 0.64100003)
 
 [node name="GUI" type="CanvasLayer"]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 421.0
-offset_bottom = 221.0
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_efmwq")
 
-[node name="AmmoCount" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score"
+label_settings = SubResource("LabelSettings_mfius")
+
+[node name="Panel2" type="Panel" parent="."]
+z_index = 6
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -418.0
+offset_top = 198.0
+offset_right = -330.0
+offset_bottom = 221.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme = SubResource("Theme_ynd5l")
+theme_override_styles/panel = SubResource("StyleBoxFlat_b8iy7")
+
+[node name="AmmoCount" type="Label" parent="Panel2"]
 custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 86.0
+grow_vertical = 0
 size_flags_vertical = 8
 text = "16/16 Rnds"
 label_settings = SubResource("LabelSettings_efmwq")
 horizontal_alignment = 2
 script = ExtResource("1_efmwq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 421.0
+offset_bottom = 221.0

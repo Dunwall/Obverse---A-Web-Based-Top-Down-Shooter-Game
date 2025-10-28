@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://n5lgq4vysvek"]
+
+[ext_resource type="FontFile" uid="uid://bt3d7b80qiylc" path="res://asset/Font/justice/justice3d.ttf" id="1_mwn6m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xdx16"]
+paragraph_spacing = -0.08
+font = ExtResource("1_mwn6m")
+font_color = Color(1, 0.5189479, 1, 1)
+outline_size = 1
+
+[node name="End" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = -11.5
+offset_right = 119.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "THANK YOU FOR PLAYING!"
+label_settings = SubResource("LabelSettings_xdx16")

@@ -10,12 +10,17 @@ static var guns = {
 		1.5,    # reload time
 		7      # total capacity
 	),
-	
+	"uzi": GunData.new(
+		24,
+		0.2,
+		2.0,
+		24
+	),
 	"submachine_gun": GunData.new(
-		30,     # rounds per mag
+		24,     # rounds per mag
 		0.1,    # fire rate (fast)
 		2.0,    # reload time
-		30     # total capacity
+		24     # total capacity
 	),
 	
 	"shotgun": GunData.new(

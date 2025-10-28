@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://dfdyqcuarpdbm"]
+[gd_scene load_steps=54 format=4 uid="uid://dfdyqcuarpdbm"]
 
 [ext_resource type="Script" uid="uid://cbqevcn4xspoj" path="res://Rooms/room.gd" id="1_2eq1m"]
 [ext_resource type="Texture2D" uid="uid://enjerpvw7iy3" path="res://asset/environment.png" id="1_adkj4"]
@@ -3000,6 +3000,9 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp4nw"]
+size = Vector2(102, 36)
+
 [node name="Room" type="Node2D"]
 position = Vector2(-101, 59)
 script = ExtResource("1_2eq1m")
@@ -3009,6 +3012,8 @@ script = ExtResource("1_2eq1m")
 [node name="RestartUI" parent="." instance=ExtResource("2_24s3j")]
 
 [node name="GUI" parent="." instance=ExtResource("4_l2nqm")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("17_c30gu")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
@@ -3218,11 +3223,6 @@ position = Vector2(410.99997, -162)
 rotation = 1.569471
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="Enemy2" parent="Paths" instance=ExtResource("2_2eq1m")]
-position = Vector2(262, 134)
-rotation = -0.523598
-scale = Vector2(1.0000001, 1.0000001)
-
 [node name="Enemy3" parent="Paths" instance=ExtResource("2_2eq1m")]
 position = Vector2(173, 135)
 rotation = -1.5707941
@@ -3305,4 +3305,13 @@ rotation = 3.1415927
 position = Vector2(553, 39)
 rotation = -1.5707941
 
-[node name="PauseMenu" parent="." instance=ExtResource("17_c30gu")]
+[node name="EndTransition" type="Area2D" parent="."]
+position = Vector2(169, -156)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndTransition"]
+position = Vector2(-17, -5)
+shape = SubResource("RectangleShape2D_bp4nw")
+
+[connection signal="body_entered" from="EndTransition" to="." method="_on_end_transition_body_entered"]

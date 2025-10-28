@@ -1,12 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://qh776p4kiqk2"]
+[gd_scene load_steps=8 format=3 uid="uid://qh776p4kiqk2"]
 
 [ext_resource type="Script" uid="uid://dy5l4562acibu" path="res://Rooms/restart_ui.gd" id="1_4hsk8"]
 [ext_resource type="FontFile" uid="uid://dyncanksy6ac0" path="res://asset/Font/justice/justicecondout.ttf" id="2_bk76p"]
+
+[sub_resource type="Theme" id="Theme_bk76p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bk76p"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6wpiv"]
 font = ExtResource("2_bk76p")
 font_size = 22
 font_color = Color(1, 0.4366271, 0.9929336, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbgfq"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_24s3j"]
 font = ExtResource("2_bk76p")
@@ -14,40 +22,73 @@ font_size = 22
 font_color = Color(1, 0.48677072, 0.9955913, 1)
 
 [node name="RestartUI" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_4hsk8")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+z_index = 6
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -89.0
-offset_bottom = 28.0
+offset_left = -94.0
+offset_bottom = 27.0
 grow_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 4
+theme = SubResource("Theme_bk76p")
+theme_override_styles/panel = SubResource("StyleBoxFlat_bk76p")
 
-[node name="YouDiedLabel" type="Label" parent="HBoxContainer"]
-layout_mode = 2
+[node name="YouDiedLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -91.0
+offset_bottom = 25.0
+grow_horizontal = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_bk76p")
 theme_override_font_sizes/font_size = 23
 text = "You Died"
 label_settings = SubResource("LabelSettings_6wpiv")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -106.0
+offset_bottom = 27.0
+grow_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Panel2" type="Panel" parent="."]
+z_index = 4
+offset_top = 195.0
+offset_right = 214.0
+offset_bottom = 220.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jbgfq")
+
+[node name="PressRLabel" type="Label" parent="Panel2"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 212.0
+offset_bottom = 25.0
+size_flags_vertical = 8
+text = "Press R to restart"
+label_settings = SubResource("LabelSettings_24s3j")
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 134.0
+offset_left = 4.0
+offset_top = -25.0
+offset_right = 216.0
 grow_vertical = 0
 size_flags_vertical = 0
-
-[node name="PressRLabel" type="Label" parent="HBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 8
-text = "Press R to restart"
-label_settings = SubResource("LabelSettings_24s3j")

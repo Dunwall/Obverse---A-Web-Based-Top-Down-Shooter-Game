@@ -1,7 +1,6 @@
 extends Node2D
 @onready var pause_menu = $PauseMenu
 @onready var start_screen = $Menu
-
 func _ready() -> void:
 	start_screen.visible = false  # Hide start screen when gameplay starts
 
@@ -22,3 +21,8 @@ func open_pause_menu():
 func close_pause_menu():
 	pause_menu.visible = false
 	get_tree().paused = false
+
+
+func _on_end_transition_body_entered(body: Node2D) -> void:
+	if body is Player:
+		get_tree().change_scene_to_file("res://scenes/end.tscn")

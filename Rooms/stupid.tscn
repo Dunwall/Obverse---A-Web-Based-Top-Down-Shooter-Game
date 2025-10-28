@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://4n4apw8vrdpd"]
+[gd_scene load_steps=20 format=3 uid="uid://4n4apw8vrdpd"]
 
 [ext_resource type="Script" uid="uid://2rupm03k3q3u" path="res://Rooms/stupid.gd" id="1_eqjtx"]
 [ext_resource type="FontFile" uid="uid://djk7fuiv1b6g5" path="res://asset/Font/justice/justice.ttf" id="2_tcyjs"]
 [ext_resource type="FontFile" uid="uid://bt3d7b80qiylc" path="res://asset/Font/justice/justice3d.ttf" id="3_tc5hc"]
+[ext_resource type="FontFile" uid="uid://dyncanksy6ac0" path="res://asset/Font/justice/justicecondout.ttf" id="4_o5f21"]
+[ext_resource type="Script" uid="uid://bwf51p0dom0vu" path="res://Rooms/audio_control.gd" id="5_1lfst"]
+[ext_resource type="Script" uid="uid://bn4v2x8y1s77p" path="res://Rooms/fullscreen_control.gd" id="6_ujrvd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_him5y"]
 bg_color = Color(0, 0, 0, 0)
@@ -18,7 +21,33 @@ bg_color = Color(11.715372, 11.715372, 11.715372, 0)
 
 [sub_resource type="GDScript" id="GDScript_swtld"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swtld"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_poklh"]
+bg_color = Color(11.715372, 11.715372, 11.715372, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdpny"]
+bg_color = Color(11.715372, 11.715372, 11.715372, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vit6"]
+bg_color = Color(11.715372, 11.715372, 11.715372, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2g2xg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tvi7e"]
+font = ExtResource("3_tc5hc")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yg2aw"]
+color = Color(1, 1, 1, 1)
+thickness = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_x5m4h"]
+color = Color(0.18039216, 0.4117647, 1, 1)
+thickness = 3
+
 [node name="PauseMenu" type="CanvasLayer"]
+layer = 4
 visible = false
 script = ExtResource("1_eqjtx")
 
@@ -47,7 +76,7 @@ theme_override_fonts/font = ExtResource("2_tcyjs")
 theme_override_font_sizes/font_size = 45
 text = "PAUSE"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="pause_menu"]
+[node name="MainButtons" type="VBoxContainer" parent="pause_menu"]
 process_mode = 2
 layout_mode = 1
 anchors_preset = 8
@@ -63,7 +92,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 1
 
-[node name="resume_button" type="Button" parent="pause_menu/VBoxContainer"]
+[node name="resume_button" type="Button" parent="pause_menu/MainButtons"]
 process_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
@@ -81,7 +110,7 @@ text = "Resume"
 alignment = 0
 script = SubResource("GDScript_swtld")
 
-[node name="restart_button" type="Button" parent="pause_menu/VBoxContainer"]
+[node name="restart_button" type="Button" parent="pause_menu/MainButtons"]
 process_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
@@ -99,7 +128,7 @@ text = "Restart"
 alignment = 0
 script = SubResource("GDScript_swtld")
 
-[node name="options_button" type="Button" parent="pause_menu/VBoxContainer"]
+[node name="options_button" type="Button" parent="pause_menu/MainButtons"]
 process_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
@@ -117,7 +146,7 @@ text = "Options"
 alignment = 0
 script = SubResource("GDScript_swtld")
 
-[node name="exit_button" type="Button" parent="pause_menu/VBoxContainer"]
+[node name="exit_button" type="Button" parent="pause_menu/MainButtons"]
 process_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
@@ -136,7 +165,103 @@ text = "Exit"
 alignment = 0
 script = SubResource("GDScript_swtld")
 
-[connection signal="pressed" from="pause_menu/VBoxContainer/resume_button" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="pause_menu/VBoxContainer/restart_button" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="pause_menu/VBoxContainer/options_button" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="pause_menu/VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
+[node name="Options" type="Panel" parent="pause_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="pause_menu/Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_top = 16.0
+offset_right = 63.5
+offset_bottom = 51.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.54509807, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tcyjs")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+
+[node name="Back" type="Button" parent="pause_menu/Options"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -46.0
+offset_right = 33.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.18039216, 0.4117647, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.8, 0, 0.8901961, 1)
+theme_override_colors/font_hover_color = Color(0.8, 0, 0.8901961, 1)
+theme_override_fonts/font = ExtResource("4_o5f21")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_swtld")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_poklh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jdpny")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8vit6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2g2xg")
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pause_menu/Options"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 80.0
+offset_top = -27.0
+offset_right = -69.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="pause_menu/Options/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 116
+
+[node name="Label" type="Label" parent="pause_menu/Options/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Volume"
+label_settings = SubResource("LabelSettings_tvi7e")
+
+[node name="AudioControl" type="HSlider" parent="pause_menu/Options/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_yg2aw")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_x5m4h")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_x5m4h")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_1lfst")
+audio_bus_name = "Music"
+
+[node name="FullscreenControl" type="CheckButton" parent="pause_menu/Options/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tc5hc")
+text = "Full Screen"
+script = ExtResource("6_ujrvd")
+
+[connection signal="pressed" from="pause_menu/MainButtons/resume_button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="pause_menu/MainButtons/restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="pause_menu/MainButtons/options_button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="pause_menu/MainButtons/exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="pause_menu/Options/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="pause_menu/Options/VBoxContainer/HBoxContainer/AudioControl" to="pause_menu/Options/VBoxContainer/HBoxContainer/AudioControl" method="_on_value_changed"]
+[connection signal="toggled" from="pause_menu/Options/VBoxContainer/FullscreenControl" to="pause_menu/Options/VBoxContainer/FullscreenControl" method="_on_toggled"]

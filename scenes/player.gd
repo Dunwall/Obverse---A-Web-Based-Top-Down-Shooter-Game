@@ -1,9 +1,11 @@
 extends Actor
+class_name Player
 
 @export var push_strength: float = 1300.0
 
-@onready var legs_sprite = $LegsAnimatedSprite2D
-@onready var torso_sprite = $TorsoAnimatedSprite2D
+@onready var legs_sprite = $LegsAnimatedSprite2d
+@onready var torso_sprite = $TorsoAnimatedSprite2d
+@onready var death_sprite = $DeathAnimatedSprite2d
 
 const LEGS_WALK_ANIM = "walk_legs"
 const TORSO_WALK_ANIM = "walk_scorpion"
@@ -11,9 +13,22 @@ const TORSO_ATTACK_ANIM = "attack_scorpion"
 
 func _physics_process(delta: float) -> void:
 	if hp <= 0:
+		# Stop movement
 		velocity = Vector2.ZERO
 		move_and_slide()
+
+		# Hide legs and torso sprites, show death sprite
+		legs_sprite.hide()
+		torso_sprite.hide()
+		death_sprite.show()
+		if death_sprite.animation != "death" or not death_sprite.is_playing():
+			death_sprite.play("death")
 		return
+	else:
+		# Ensure death sprite is hidden when alive
+		death_sprite.hide()
+		legs_sprite.show()
+		torso_sprite.show()
 
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")

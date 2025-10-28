@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://deixqvuipu7a1" path="res://scenes/gun.gd" id="1_x77fm"]
 [ext_resource type="AudioStream" uid="uid://ce580dmd32cbe" path="res://sounds/8bit_gunloop_explosion.wav" id="2_og67c"]
-[ext_resource type="AudioStream" uid="uid://bdlpbjy7kryqo" path="res://sounds/clipload1.wav" id="3_gp1hk"]
+[ext_resource type="AudioStream" uid="uid://cto62d1img63q" path="res://sounds/gun-reload-2-395177.mp3" id="3_qd4js"]
 [ext_resource type="AudioStream" uid="uid://c68xuyexf7e66" path="res://sounds/dry.wav" id="4_qd4js"]
 
 [sub_resource type="Animation" id="Animation_haq8l"]
@@ -57,7 +57,7 @@ position = Vector2(23.199999, -6)
 stream = ExtResource("2_og67c")
 
 [node name="Reload" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_gp1hk")
+stream = ExtResource("3_qd4js")
 
 [node name="Dry" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_qd4js")
