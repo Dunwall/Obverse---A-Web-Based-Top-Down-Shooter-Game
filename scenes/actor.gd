@@ -1,7 +1,7 @@
 class_name Actor
 extends CharacterBody2D
 
-const SPEED: int = 150
+const SPEED: int = 170
 const BULLET: PackedScene = preload("res://scenes/bullet.tscn")
 const BLOOD_SPLATTER: PackedScene = preload("res://scenes/blood_splatter.tscn")
 

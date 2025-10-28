@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://dfdyqcuarpdbm"]
+[gd_scene load_steps=55 format=4 uid="uid://dfdyqcuarpdbm"]
 
 [ext_resource type="Script" uid="uid://cbqevcn4xspoj" path="res://Rooms/room.gd" id="1_2eq1m"]
 [ext_resource type="Texture2D" uid="uid://enjerpvw7iy3" path="res://asset/environment.png" id="1_adkj4"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://cw442bumwwag0" path="res://scenes/jacket.tscn" id="27_dcqm7"]
 [ext_resource type="PackedScene" uid="uid://chaydysq5ynno" path="res://scenes/sinks.tscn" id="28_bp4nw"]
 [ext_resource type="PackedScene" uid="uid://dgvd6uk0m03ng" path="res://scenes/bathtub.tscn" id="29_y8hch"]
+[ext_resource type="PackedScene" uid="uid://w8dfrvqm2oys" path="res://scenes/scene_transition.tscn" id="33_y8hch"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6wpiv"]
 vertices = PackedVector2Array(207.5, -169.5, 207.5, -152.5, 95.5, -152.5, 62.5, -169.5, 62.5, 135.5, 95.5, -89.5, 126.5, -89.5, 126.5, -121.5, 303.5, -121.5, 303.5, -40.5, 255.5, -40.5, 255.5, -9.5, 303.5, -9.5, 303.5, 38.5, 382.5, 38.5, 382.5, -9.5, 398.5, -9.5, 398.5, -40.5, 334.5, -40.5, 334.5, -169.5, 431.5, -169.5, 431.5, -105.5, 511.5, -105.5, 511.5, -73.5, 542.5, -73.5, 542.5, -105.5, 575.5, -105.5, 575.5, 22.5, 606.5, -136.5, 542.5, -136.5, 542.5, -169.5, 655.5, -169.5, 655.5, 71.5, 606.5, 22.5, 606.5, 71.5, 606.5, 39.5, 575.5, 39.5, 575.5, 71.5, 510.5, 71.5, 510.5, -9.5, 542.5, -9.5, 542.5, -56.5, 511.5, -56.5, 511.5, -40.5, 415.5, -40.5, 415.5, -9.5, 479.5, -9.5, 479.5, 71.5, 255.5, 102.5, 479.5, 102.5, 479.5, 134.5, 510.5, 134.5, 510.5, 102.5, 575.5, 102.5, 575.5, 135.5, 543.5, 135.5, 543.5, 183.5, 510.5, 183.5, 510.5, 151.5, 479.5, 151.5, 479.5, 183.5, 142.5, 183.5, 142.5, 102.5, 238.5, 102.5, 255.5, 71.5, 238.5, 71.5, 190.5, 71.5, 190.5, -9.5, 238.5, -9.5, 238.5, -40.5, 126.5, -40.5, 126.5, -72.5, 95.5, -9.5, 159.5, -9.5, 159.5, 71.5, 111.5, 71.5, 111.5, 135.5, 95.5, -72.5, 351.5, 7.5, 334.5, 7.5, 334.5, -9.5, 351.5, -9.5)
@@ -3313,5 +3314,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndTransition"]
 position = Vector2(-17, -5)
 shape = SubResource("RectangleShape2D_bp4nw")
+
+[node name="SceneTransition" parent="." instance=ExtResource("33_y8hch")]
 
 [connection signal="body_entered" from="EndTransition" to="." method="_on_end_transition_body_entered"]

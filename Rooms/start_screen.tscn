@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bf88xckc554hw"]
+[gd_scene load_steps=21 format=3 uid="uid://bf88xckc554hw"]
 
 [ext_resource type="FontFile" uid="uid://dyncanksy6ac0" path="res://asset/Font/justice/justicecondout.ttf" id="1_hbr44"]
 [ext_resource type="Script" uid="uid://dmta3hbbv602f" path="res://Rooms/start_screen.gd" id="1_iey71"]
 [ext_resource type="FontFile" uid="uid://d07ue3kgw4vdq" path="res://asset/Font/disco_duck/discoducksemital.ttf" id="1_pgne7"]
 [ext_resource type="FontFile" uid="uid://djk7fuiv1b6g5" path="res://asset/Font/justice/justice.ttf" id="4_cp5gm"]
 [ext_resource type="Script" uid="uid://bwf51p0dom0vu" path="res://Rooms/audio_control.gd" id="5_7w1qh"]
+[ext_resource type="Script" uid="uid://7c0pl2c5j36u" path="res://Rooms/audio_sfx.gd" id="7_d7m8a"]
 [ext_resource type="FontFile" uid="uid://bt3d7b80qiylc" path="res://asset/Font/justice/justice3d.ttf" id="7_v0ebb"]
 [ext_resource type="Script" uid="uid://bn4v2x8y1s77p" path="res://Rooms/fullscreen_control.gd" id="8_d7m8a"]
 
@@ -223,7 +224,7 @@ theme_override_constants/separation = 116
 [node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Volume"
+text = "Music"
 label_settings = SubResource("LabelSettings_v0ebb")
 
 [node name="AudioControl" type="HSlider" parent="Options/VBoxContainer/HBoxContainer"]
@@ -239,8 +240,31 @@ value = 1.0
 script = ExtResource("5_7w1qh")
 audio_bus_name = "Music"
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 131
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SFX"
+label_settings = SubResource("LabelSettings_v0ebb")
+
+[node name="AudioControl" type="HSlider" parent="Options/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_cp5gm")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_esamu")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_esamu")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("7_d7m8a")
+
 [node name="FullscreenControl" type="CheckButton" parent="Options/VBoxContainer"]
 layout_mode = 2
+size_flags_stretch_ratio = 0.0
 theme_override_fonts/font = ExtResource("7_v0ebb")
 text = "Full Screen"
 script = ExtResource("8_d7m8a")
@@ -250,4 +274,5 @@ script = ExtResource("8_d7m8a")
 [connection signal="pressed" from="MainButtons/Button3" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Options/Back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="Options/VBoxContainer/HBoxContainer/AudioControl" to="Options/VBoxContainer/HBoxContainer/AudioControl" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/VBoxContainer/HBoxContainer2/AudioControl" to="Options/VBoxContainer/HBoxContainer2/AudioControl" method="_on_value_changed"]
 [connection signal="toggled" from="Options/VBoxContainer/FullscreenControl" to="Options/VBoxContainer/FullscreenControl" method="_on_toggled"]

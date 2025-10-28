@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://n5lgq4vysvek"]
+[gd_scene load_steps=5 format=3 uid="uid://n5lgq4vysvek"]
 
 [ext_resource type="FontFile" uid="uid://bt3d7b80qiylc" path="res://asset/Font/justice/justice3d.ttf" id="1_mwn6m"]
+[ext_resource type="Script" uid="uid://dw5yhrf56swj4" path="res://scenes/end.gd" id="1_p7m4f"]
+[ext_resource type="PackedScene" uid="uid://w8dfrvqm2oys" path="res://scenes/scene_transition.tscn" id="2_3d26k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xdx16"]
 paragraph_spacing = -0.08
@@ -9,6 +11,7 @@ font_color = Color(1, 0.5189479, 1, 1)
 outline_size = 1
 
 [node name="End" type="CanvasLayer"]
+script = ExtResource("1_p7m4f")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -32,3 +35,5 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "THANK YOU FOR PLAYING!"
 label_settings = SubResource("LabelSettings_xdx16")
+
+[node name="SceneTransition" parent="." instance=ExtResource("2_3d26k")]

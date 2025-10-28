@@ -1,8 +1,11 @@
 extends Node2D
 @onready var pause_menu = $PauseMenu
 @onready var start_screen = $Menu
+@onready var SceneTransition = $SceneTransition/AnimationPlayer
+
 func _ready() -> void:
 	start_screen.visible = false  # Hide start screen when gameplay starts
+	AudioManager.restore_original_volume()
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -25,4 +28,6 @@ func close_pause_menu():
 
 func _on_end_transition_body_entered(body: Node2D) -> void:
 	if body is Player:
+		SceneTransition.play("fade_in")
+		await get_tree().create_timer(0.5).timeout
 		get_tree().change_scene_to_file("res://scenes/end.tscn")

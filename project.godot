@@ -22,6 +22,7 @@ Events="*res://scenes/events.gd"
 SoundManager="*res://scenes/SoundManager.gd"
 gameover="*res://Rooms/gameover.tscn"
 BackgroundMusic="*res://scenes/BackgroundMusic.tscn"
+AudioManager="*res://asset/AudioManager.gd"
 
 [display]
 
