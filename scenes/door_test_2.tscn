@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://4eojni0msq44"]
+
+[ext_resource type="Script" uid="uid://b32ck6uq0yenm" path="res://scenes/rigid_body_2d.gd" id="1_wak7b"]
+[ext_resource type="Texture2D" uid="uid://dv2ok6pgw0hu8" path="res://asset/walls/sprDoorH2.png" id="1_x42uo"]
+[ext_resource type="PackedScene" uid="uid://dy1ma3o8iwkok" path="res://scenes/player.tscn" id="3_i0aut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x42uo"]
+size = Vector2(34, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wak7b"]
+size = Vector2(32, 2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wak7b"]
+radius = 4.1231055
+
+[node name="doorTest2" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_x42uo")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+script = ExtResource("1_wak7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_wak7b")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("1_x42uo")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(-16, 0)
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../RigidBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-16, 0)
+shape = SubResource("CircleShape2D_wak7b")
+
+[node name="Player" parent="." instance=ExtResource("3_i0aut")]
+position = Vector2(-60, -4)
+
+[connection signal="body_entered" from="Area2D" to="RigidBody2D" method="_on_area_2d_body_entered"]

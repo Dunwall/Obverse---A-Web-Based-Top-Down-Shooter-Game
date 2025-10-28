@@ -12,7 +12,7 @@ extends CharacterBody2D
 @export var patrol_loop: bool = true
 @export var path_follow_node: NodePath  # drag PathFollow2D here (Enemy is NOT its child)
 @export var search_memory_time: float = 3.0  # seconds enemy remembers seeing the player
-@export var hearing_range: float = 100.0
+@export var hearing_range: float = 130.0
 @export var hearing_chase_speed: float = 120.0  # slower speed when chasing by hearing only
 
 
@@ -36,13 +36,6 @@ var _search_timer: float = 0.0
 var _vision_timer: float = 0.0
 var _player_in_sight: bool = false
 
-# Death sprites array
-var death_sprites := [
-	preload("res://asset/Enemy/death_pose_0.png"),
-	preload("res://asset/Enemy/death_pose_1.png"),
-	preload("res://asset/Enemy/death_pose_2.png")
-]
-
 
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 var navigation: NavigationRegion2D
@@ -50,6 +43,7 @@ var navigation: NavigationRegion2D
 var _is_shooting: bool = false
 
 func _ready() -> void:
+
 	add_to_group("enemies")
 	animated_sprite.sprite_frames = animated_sprite.sprite_frames.duplicate(true)
 	if has_node("EnemGun"):
@@ -247,14 +241,12 @@ func take_damage(amount: int) -> void:
 	print("[Enemy] ", name, " took ", amount, " damage and died!")
 	die()
 
-@onready var corpse_sprite: Sprite2D = $CorpseSprite
-
 func die() -> void:
 	if _is_dead:
 		return
 	_is_dead = true
 
-	# Disable logic/collisions
+	# Disable logic and collisions
 	set_physics_process(false)
 	set_process(false)
 	remove_from_group("enemies")
@@ -262,19 +254,17 @@ func die() -> void:
 	set_collision_mask_value(1, false)
 	set_collision_mask_value(2, false)
 
-	# Randomize static corpse sprite (safe now)
+	# Stop animations and show a static final frame (optional)
 	if animated_sprite:
 		animated_sprite.stop()
-		var random_index = randi() % death_sprites.size()
-		var frames := SpriteFrames.new()
-		frames.add_frame("dead", death_sprites[random_index])
-		animated_sprite.sprite_frames = frames
-		animated_sprite.play("dead")
-
-	rotation += randf_range(-0.3, 0.3)
+		animated_sprite.play("die") # only if you already have a "die" anim
+		# otherwise just leave it stopped
 
 	await get_tree().create_timer(2.0).timeout
 	queue_free()
+
+
+
 
 	
 '''func _draw():

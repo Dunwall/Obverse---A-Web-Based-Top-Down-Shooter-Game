@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://dmta3hbbv602f" path="res://Rooms/start_screen.gd" id="1_iey71"]
 [ext_resource type="FontFile" uid="uid://d07ue3kgw4vdq" path="res://asset/Font/disco_duck/discoducksemital.ttf" id="1_pgne7"]
 [ext_resource type="FontFile" uid="uid://djk7fuiv1b6g5" path="res://asset/Font/justice/justice.ttf" id="4_cp5gm"]
+[ext_resource type="PackedScene" uid="uid://cincx5po6wwe0" path="res://scenes/BackgroundMusic.tscn" id="4_v0ebb"]
 [ext_resource type="Script" uid="uid://bwf51p0dom0vu" path="res://Rooms/audio_control.gd" id="5_7w1qh"]
-[ext_resource type="AudioStream" uid="uid://c53wsudvxnhr3" path="res://sounds/kanye_west_john_mayer_-_bittersweet_poetry_(mp3.pm).mp3" id="6_7w1qh"]
 [ext_resource type="FontFile" uid="uid://bt3d7b80qiylc" path="res://asset/Font/justice/justice3d.ttf" id="7_v0ebb"]
 [ext_resource type="Script" uid="uid://bn4v2x8y1s77p" path="res://Rooms/fullscreen_control.gd" id="8_d7m8a"]
 
@@ -153,10 +153,7 @@ theme_override_fonts/font = ExtResource("1_pgne7")
 theme_override_font_sizes/font_size = 50
 text = "Obverse"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_7w1qh")
-autoplay = true
-bus = &"Music"
+[node name="BackgroundMusic" parent="." instance=ExtResource("4_v0ebb")]
 
 [node name="Options" type="Panel" parent="."]
 layout_mode = 1

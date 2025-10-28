@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgvd6uk0m03ng"]
+
+[ext_resource type="Texture2D" uid="uid://1e3y5ha00gy2" path="res://asset/Furniture/sprPetersTub.png" id="1_v8squ"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8squ"]
+size = Vector2(74, 24)
+
+[node name="bathtub" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_v8squ")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.1231884, 1)
+texture = ExtResource("1_v8squ")

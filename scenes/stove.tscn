@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://taab7nkqrewv"]
+
+[ext_resource type="Texture2D" uid="uid://bonf0abrrtbl2" path="res://asset/Furniture/sprStoveDown_strip2.png" id="1_bocw4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54o2j"]
+size = Vector2(44, 23)
+
+[node name="Stove" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_54o2j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bocw4")

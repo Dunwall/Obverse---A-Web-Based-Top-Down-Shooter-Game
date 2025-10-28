@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://spe0mbjchjic"]
+
+[ext_resource type="Texture2D" uid="uid://gcslrtnnid2x" path="res://asset/Furniture/sprSofaH64_strip2a.png" id="1_82j2i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82j2i"]
+size = Vector2(18, 52)
+
+[node name="ThirdCouch" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_82j2i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4.7683716e-07)
+rotation = -1.5707964
+scale = Vector2(0.8333334, 0.8125)
+texture = ExtResource("1_82j2i")

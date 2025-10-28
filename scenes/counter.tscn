@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3xfkw8ey4gv2"]
+
+[ext_resource type="Texture2D" uid="uid://cxyx0h70oq805" path="res://asset/Furniture/sprKitchenCounter.png" id="1_sc7mx"]
+[ext_resource type="Texture2D" uid="uid://7w4e83hxk6a" path="res://asset/Furniture/sprFridge.png" id="2_8e5hq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc7mx"]
+size = Vector2(21, 29)
+
+[node name="Counter" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_sc7mx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.1415925
+texture = ExtResource("1_sc7mx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(5.506019, -1.1969616)
+rotation = 1.5707964
+scale = Vector2(1.0997467, 0.68081087)
+texture = ExtResource("2_8e5hq")

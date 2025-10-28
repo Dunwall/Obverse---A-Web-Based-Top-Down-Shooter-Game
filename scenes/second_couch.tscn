@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://jyxenbyv2nbh"]
+
+[ext_resource type="Texture2D" uid="uid://bt1v1lf02dg6j" path="res://asset/Furniture/sprWhiteSofa.png" id="1_ydiks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydiks"]
+size = Vector2(22, 58)
+
+[node name="SecondCouch" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ydiks")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.9604645e-08, 0)
+scale = Vector2(0.9166667, 0.921875)
+texture = ExtResource("1_ydiks")

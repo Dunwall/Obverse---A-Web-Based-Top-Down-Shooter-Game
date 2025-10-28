@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5rt6eepstygx"]
+
+[ext_resource type="Texture2D" uid="uid://bscdh7oqj7fse" path="res://asset/Furniture/sprTableStriped_pink.png" id="1_02ppr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eotx8"]
+size = Vector2(43.25, 28)
+
+[node name="Table" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2.375, 2)
+shape = SubResource("RectangleShape2D_eotx8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.0925004, 2)
+scale = Vector2(0.97366667, 0.93333334)
+texture = ExtResource("1_02ppr")

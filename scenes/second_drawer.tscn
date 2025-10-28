@@ -1,0 +1,111 @@
+[gd_scene load_steps=16 format=3 uid="uid://pmnln33kjkl8"]
+
+[ext_resource type="Texture2D" uid="uid://c46onn840cjea" path="res://asset/Furniture/sprDrawersH24Phone_strip12.png" id="1_5nigu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nigu"]
+size = Vector2(22, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgy53"]
+atlas = ExtResource("1_5nigu")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guluq"]
+atlas = ExtResource("1_5nigu")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic2uy"]
+atlas = ExtResource("1_5nigu")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tujow"]
+atlas = ExtResource("1_5nigu")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i7os"]
+atlas = ExtResource("1_5nigu")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxjdq"]
+atlas = ExtResource("1_5nigu")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g074"]
+atlas = ExtResource("1_5nigu")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b6h1"]
+atlas = ExtResource("1_5nigu")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ula1p"]
+atlas = ExtResource("1_5nigu")
+region = Rect2(192, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8rgs"]
+atlas = ExtResource("1_5nigu")
+region = Rect2(216, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ymn0"]
+atlas = ExtResource("1_5nigu")
+region = Rect2(240, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l2dt"]
+atlas = ExtResource("1_5nigu")
+region = Rect2(264, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xdydn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgy53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guluq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic2uy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tujow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i7os")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxjdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g074")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b6h1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ula1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8rgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ymn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l2dt")
+}],
+"loop": true,
+"name": &"ringing_phone",
+"speed": 7.0
+}]
+
+[node name="second_drawer" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_5nigu")
+
+[node name="ringing phone" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xdydn")
+animation = &"ringing_phone"
+frame_progress = 0.27041596

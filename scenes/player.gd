@@ -2,11 +2,12 @@ extends Actor
 
 @export var push_strength: float = 1300.0
 
-@onready var animated_sprite = $Character
+@onready var legs_sprite = $LegsAnimatedSprite2D
+@onready var torso_sprite = $TorsoAnimatedSprite2D
 
-# Animation name constants
-const ANIM_WALK = "walk_scorpion"
-const ANIM_ATTACK = "attack_scorpion"
+const LEGS_WALK_ANIM = "walk_legs"
+const TORSO_WALK_ANIM = "walk_scorpion"
+const TORSO_ATTACK_ANIM = "attack_scorpion"
 
 func _physics_process(delta: float) -> void:
 	if hp <= 0:
@@ -42,26 +43,20 @@ func _physics_process(delta: float) -> void:
 func _ready() -> void:
 	add_to_group("player")
 
-func get_sprite_node():
-	return animated_sprite
-
 func update_animation(input_vector: Vector2):
-	var is_attacking = animated_sprite.animation == ANIM_ATTACK and animated_sprite.is_playing()
+	var is_attacking = torso_sprite.animation == TORSO_ATTACK_ANIM and torso_sprite.is_playing()
 	
-	if not is_attacking:
-		if input_vector.length() > 0:
-			animated_sprite.play(ANIM_WALK)
-		else:
-			animated_sprite.stop()
+	if input_vector.length() > 0:
+		legs_sprite.play(LEGS_WALK_ANIM)
+		if not is_attacking:
+			torso_sprite.play(TORSO_WALK_ANIM)
+	else:
+		legs_sprite.stop()
+		if not is_attacking:
+			torso_sprite.stop()
 
 func shoot():
-	# CHANGED: Only play animation if gun has bullets
-	if _gun != null:
-		# Check if gun has bullets in magazine
-		if _gun.current_mag > 0:
-			# Play animation only when there are bullets
-			if animated_sprite.animation != ANIM_ATTACK or not animated_sprite.is_playing():
-				animated_sprite.play(ANIM_ATTACK)
-		
-		# Gun script handles shooting (including dry fire sound)
+	if _gun != null and _gun.current_mag > 0:
+		if torso_sprite.animation != TORSO_ATTACK_ANIM or not torso_sprite.is_playing():
+			torso_sprite.play(TORSO_ATTACK_ANIM)
 		_gun.shoot()

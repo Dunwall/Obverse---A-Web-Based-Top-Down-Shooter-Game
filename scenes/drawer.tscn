@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdfgv1njtpnel"]
+
+[ext_resource type="Texture2D" uid="uid://dyyxubeln2rmj" path="res://asset/Furniture/sprDrawersH24PhoneOff.png" id="1_lvudm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0f1d"]
+size = Vector2(22, 20)
+
+[node name="Drawer" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_k0f1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lvudm")

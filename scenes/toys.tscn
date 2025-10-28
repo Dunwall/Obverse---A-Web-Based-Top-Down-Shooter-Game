@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dug345ub21xy7"]
+
+[ext_resource type="Texture2D" uid="uid://dpmtuejo7pgim" path="res://asset/Furniture/sprToyM16.png" id="1_3ncnu"]
+[ext_resource type="Texture2D" uid="uid://bkptpbd6l0t0m" path="res://asset/Furniture/sprToyLego_strip4a.png" id="2_xnbwg"]
+[ext_resource type="Texture2D" uid="uid://bkrgex13esdrl" path="res://asset/Furniture/sprToyLego_strip4b.png" id="3_rcrig"]
+[ext_resource type="Texture2D" uid="uid://cdc8lvaj8ld4g" path="res://asset/Furniture/sprToyLego_strip4c.png" id="4_l8rd3"]
+[ext_resource type="Texture2D" uid="uid://i6y43hkjsmqu" path="res://asset/Furniture/sprToyTurtle_strip4a.png" id="5_jgbtg"]
+
+[node name="toys" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5707964
+texture = ExtResource("1_3ncnu")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-43.75, -12.5)
+scale = Vector2(1.1956521, 1.15)
+texture = ExtResource("2_xnbwg")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-24, -7.114828)
+rotation = -0.3404703
+scale = Vector2(1.0496365, 1.1050832)
+texture = ExtResource("3_rcrig")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-53, -2)
+texture = ExtResource("4_l8rd3")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(-46, -17)
+scale = Vector2(0.65, 0.6)
+texture = ExtResource("5_jgbtg")

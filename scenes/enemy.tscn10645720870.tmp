@@ -1,0 +1,144 @@
+[gd_scene load_steps=17 format=3 uid="uid://bghkokcl4edh6"]
+
+[ext_resource type="Script" uid="uid://cjqc63l26ag6n" path="res://scenes/enemy.gd" id="1_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://cr3mrhme3e611" path="res://asset/Enemy/enemy2.png" id="2_5uy6h"]
+[ext_resource type="Material" uid="uid://h0g0v1m7rvnc" path="res://blood_particles.tres" id="5_c4w8v"]
+[ext_resource type="PackedScene" uid="uid://ceuriahd7cvrt" path="res://scenes/enem_gun.tscn" id="5_xwavj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtq4b"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(244, 340, 61, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(616, 714, 56, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otmr2"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(616, 748, 56, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(952, 312, 56, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(1008, 312, 56, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(1064, 312, 56, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md484"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(1120, 312, 56, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipns3"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(1176, 312, 56, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qclf"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(1232, 312, 56, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8i8w"]
+atlas = ExtResource("2_5uy6h")
+region = Rect2(1288, 312, 56, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_otmr2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtq4b")
+}],
+"loop": true,
+"name": &"death_enemy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uy6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otmr2")
+}],
+"loop": true,
+"name": &"shoot_enemy",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4w8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwavj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nenq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md484")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipns3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qclf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8i8w")
+}],
+"loop": true,
+"name": &"walk_enemy",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtq4b"]
+size = Vector2(22.75, 13.5)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_5uy6h")
+vision_delay = null
+max_sight_distance = null
+chase_speed = null
+shoot_range = null
+fire_delay = null
+detection_range = null
+los_check_interval = null
+patrol_speed = null
+patrol_loop = null
+path_follow_node = null
+search_memory_time = null
+hearing_range = null
+hearing_chase_speed = null
+
+[node name="Character" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, -1.0000002)
+scale = Vector2(0.6506696, 0.8728613)
+sprite_frames = SubResource("SpriteFrames_otmr2")
+animation = &"death_enemy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_wtq4b")
+
+[node name="BloodParticles" type="GPUParticles2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+emitting = false
+amount = 320
+lifetime = 0.58
+one_shot = true
+explosiveness = 0.56
+randomness = 0.47
+process_material = ExtResource("5_c4w8v")
+
+[node name="LoSRay" type="RayCast2D" parent="."]
+target_position = Vector2(0, 41)
+
+[node name="EnemGun" parent="." instance=ExtResource("5_xwavj")]
+position = Vector2(12, 0)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

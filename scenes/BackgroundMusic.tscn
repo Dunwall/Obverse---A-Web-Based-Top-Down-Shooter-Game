@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cincx5po6wwe0"]
+
+[ext_resource type="AudioStream" uid="uid://csif38c7giqf" path="res://sounds/02. Hydrogen.mp3" id="1_f6rfd"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_f6rfd")
+bus = &"Music"

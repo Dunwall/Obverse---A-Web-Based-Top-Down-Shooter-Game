@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://chaydysq5ynno"]
+
+[ext_resource type="Texture2D" uid="uid://1fd07hq72sy1" path="res://asset/Furniture/sprKitchenSinkDown_strip5a.png" id="1_vmknx"]
+[ext_resource type="Texture2D" uid="uid://clhltt0yshu1d" path="res://asset/Furniture/sprFridgeDown_strip3.png" id="2_awqoc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awqoc"]
+size = Vector2(29, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pi7a"]
+size = Vector2(21, 21)
+
+[node name="Sinks" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_awqoc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(29, 0)
+shape = SubResource("RectangleShape2D_2pi7a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 3)
+texture = ExtResource("1_vmknx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(29, 0)
+texture = ExtResource("2_awqoc")
