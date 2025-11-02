@@ -1,5 +1,5 @@
 extends Actor
-class_name Player
+class_name PlayerBody
 
 @export var push_strength: float = 1300.0
 

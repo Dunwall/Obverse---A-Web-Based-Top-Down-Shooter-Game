@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://btjxmdesfnjsw"]
+
+[ext_resource type="Script" uid="uid://cc3sgc30fqwfe" path="res://Rooms/test_light.gd" id="1_15djv"]
+[ext_resource type="Texture2D" uid="uid://cseu744v6rwil" path="res://asset/gun.png" id="2_u0vfs"]
+
+[node name="TestLight" type="Node2D"]
+script = ExtResource("1_15djv")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.0
+blend_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(370.5, 225)
+scale = Vector2(47.3125, 29.125)
+texture = ExtResource("2_u0vfs")

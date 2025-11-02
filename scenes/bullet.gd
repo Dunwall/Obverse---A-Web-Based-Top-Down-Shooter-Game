@@ -7,10 +7,14 @@ const DAMAGE: int = 1  # Always 1 since it's one-shot kill
 const IMPACT: PackedScene = preload("res://scenes/blood_splatter.tscn")
 const HIT_WALL: AudioStream = preload("res://sounds/wall-hit-1-100717.mp3")
 const HIT_FLESH: AudioStream = preload("res://sounds/080998_bullet-hit-39870.mp3")
+const Enemy = preload("res://scenes/enemy.gd")  # path to your enemy script file
 
 @export var friendly: bool = false
 
 @onready var _hit: AudioStreamPlayer2D = $Hit
+# Bullet.gd
+func _ready():
+	add_to_group("bullets")
 
 func _physics_process(delta: float) -> void:
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)

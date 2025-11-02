@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bw44xxsop5r1o"]
+[gd_scene load_steps=27 format=4 uid="uid://bw44xxsop5r1o"]
 
 [ext_resource type="Script" uid="uid://dr0138mdbr34x" path="res://Rooms/room_0.gd" id="1_txfal"]
 [ext_resource type="PackedScene" uid="uid://bf88xckc554hw" path="res://Rooms/start_screen.tscn" id="2_27tgc"]
@@ -2928,12 +2928,6 @@ sources/12 = SubResource("TileSetAtlasSource_mdlvh")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp4nw"]
 size = Vector2(102, 36)
 
-[sub_resource type="Curve2D" id="Curve2D_8bab8"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 261, 59, 0, 0, 0, 0, 78, 59, 0, 0, 0, 0, 78, 139)
-}
-point_count = 3
-
 [node name="Room0" type="Node2D"]
 position = Vector2(-101, 59)
 script = ExtResource("1_txfal")
@@ -2994,16 +2988,10 @@ collision_mask = 2
 position = Vector2(-17, -5)
 shape = SubResource("RectangleShape2D_bp4nw")
 
-[node name="EnemyPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_8bab8")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath"]
-position = Vector2(261, 59)
-rotation = 3.1415927
-
-[node name="bigEnemy" parent="EnemyPath/PathFollow2D" node_paths=PackedStringArray("path_follow") instance=ExtResource("16_8bab8")]
-position = Vector2(-6, 3)
-path_follow = NodePath("..")
+[node name="bigEnemy" parent="." node_paths=PackedStringArray("target_switch") instance=ExtResource("16_8bab8")]
+position = Vector2(267, 56)
+rotation = -3.1415925
+target_switch = NodePath("../Switch")
 
 [node name="Switch" parent="." node_paths=PackedStringArray("connected_object") instance=ExtResource("16_txfal")]
 position = Vector2(78, 144)

@@ -2,6 +2,7 @@ extends Node2D
 @onready var pause_menu = $PauseMenu
 @onready var start_screen = $Menu
 @onready var SceneTransition = $SceneTransition/AnimationPlayer
+@onready var room_light: PointLight2D = $PointLight2D
 
 func _ready() -> void:
 	start_screen.visible = false  # Hide start screen when gameplay starts
@@ -27,7 +28,7 @@ func close_pause_menu():
 
 
 func _on_end_transition_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if body is PlayerBody:
 		SceneTransition.play("fade_in")
 		await get_tree().create_timer(0.5).timeout
 		get_tree().change_scene_to_file("res://scenes/end.tscn")

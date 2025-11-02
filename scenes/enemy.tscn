@@ -237,8 +237,8 @@ position = Vector2(-14, 2)
 scale = Vector2(0.765625, 0.796875)
 sprite_frames = SubResource("SpriteFrames_c4w8v")
 animation = &"enemyLegs"
-frame = 4
-frame_progress = 0.6210369
+frame = 13
+frame_progress = 0.53725904
 
 [node name="enemyDeath" type="AnimatedSprite2D" parent="."]
 position = Vector2(-11, 7)

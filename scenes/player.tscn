@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dy1ma3o8iwkok"]
+[gd_scene load_steps=41 format=3 uid="uid://dy1ma3o8iwkok"]
 
 [ext_resource type="Script" uid="uid://dp16hn2bvmt6a" path="res://scenes/player.gd" id="1_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://cj7c8c3fihd0" path="res://asset/Player/sprPAttackScorpion_strip2.png" id="2_qlg0r"]
@@ -236,6 +236,9 @@ initial_velocity_min = 53.94
 initial_velocity_max = 84.71
 gravity = Vector3(0, 98, 0)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fjrip"]
+polygon = PackedVector2Array(-7.041902, -4.9408116, -0.04215078, -4.9998226, 3.9661372, -4.0335784, 6.9828906, -2.05894, 6.991321, -1.0589756, 11.999574, -0.10116187, 11.991143, -1.1011263, 24.99068, -1.2107184, 25.015972, 1.789175, 15.016327, 1.8734766, 7.041902, 4.9408116, 1.0421152, 4.9913926, -9.008111, -0.92409307, -9.008111, -0.92409307, -9.008111, -0.92409307, -9.0334015, -3.9239864)
+
 [node name="Player" type="CharacterBody2D"]
 modulate = Color(1.6978991, 1.6978991, 1.6978991, 1)
 z_index = 1
@@ -254,6 +257,8 @@ animation = &"walk_scorpion"
 [node name="LegsAnimatedSprite2d" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wqfne")
 animation = &"walk_legs"
+frame = 6
+frame_progress = 0.32782927
 
 [node name="DeathAnimatedSprite2d" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.99996376, -0.00842905)
@@ -290,3 +295,6 @@ position_smoothing_enabled = true
 script = ExtResource("5_qlg0r")
 max_offset_distance = null
 return_speed = null
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_fjrip")
