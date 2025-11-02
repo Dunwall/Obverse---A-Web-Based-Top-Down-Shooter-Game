@@ -3001,12 +3001,19 @@ curve = SubResource("Curve2D_8bab8")
 position = Vector2(261, 59)
 rotation = 3.1415927
 
-[node name="bigEnemy" parent="EnemyPath/PathFollow2D" node_paths=PackedStringArray("path_follow") instance=ExtResource("16_8bab8")]
+[node name="bigEnemy" parent="EnemyPath/PathFollow2D" node_paths=PackedStringArray("path_follow", "connected_room") instance=ExtResource("16_8bab8")]
 position = Vector2(-6, 3)
+patrol_speed = 90.0
 path_follow = NodePath("..")
+connected_room = NodePath("../../..")
 
 [node name="Switch" parent="." node_paths=PackedStringArray("connected_object") instance=ExtResource("16_txfal")]
 position = Vector2(78, 144)
+connected_object = NodePath("..")
+
+[node name="Switch2" parent="." node_paths=PackedStringArray("connected_object") instance=ExtResource("16_txfal")]
+position = Vector2(457, 35)
+rotation = -1.5713205
 connected_object = NodePath("..")
 
 [connection signal="body_entered" from="EndTransition" to="." method="_on_end_transition_body_entered"]

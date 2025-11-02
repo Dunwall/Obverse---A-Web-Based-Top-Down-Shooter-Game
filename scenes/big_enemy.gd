@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var patrol_speed: float = 70.0
 @export var patrol_loop: bool = false  # unused here, just in case
 @export var path_follow: PathFollow2D
+@export var connected_room: Node = null
 
 var _path_length: float = 0.0
 var _patrol_direction: int = 1  # 1 = forward, -1 = backward
@@ -34,6 +35,8 @@ func _process(delta):
 				state = State.WAITING_AT_SWITCH
 				_wait_time = 2.0
 				print("Reached switch")
+				if connected_room and connected_room.has_method("activate"):
+					connected_room.activate(true)  # turn lights ON
 
 		State.WAITING_AT_SWITCH:
 			_wait_time -= delta
