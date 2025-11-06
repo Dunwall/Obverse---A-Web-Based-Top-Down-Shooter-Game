@@ -31,4 +31,4 @@ func _on_end_transition_body_entered(body: Node2D) -> void:
 	if body is PlayerBody:
 		SceneTransition.play("fade_in")
 		await get_tree().create_timer(0.5).timeout
-		get_tree().change_scene_to_file("res://scenes/end.tscn")
+		get_tree().change_scene_to_file("res://Rooms/room0.tscn")

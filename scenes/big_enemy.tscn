@@ -213,6 +213,7 @@ animations = [{
 size = Vector2(21.375015, 23.500004)
 
 [node name="bigEnemy" type="CharacterBody2D"]
+rotation = -3.1415927
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_axyt8")

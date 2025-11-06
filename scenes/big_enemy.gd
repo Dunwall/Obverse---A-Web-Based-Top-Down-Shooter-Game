@@ -1,3 +1,5 @@
+#enemy can turn light on
+
 extends CharacterBody2D
 
 @export var patrol_speed: float = 70.0
@@ -16,6 +18,7 @@ var state: State = State.IDLE
 @onready var enemy_torso = $enemyTorso
 
 func _ready():
+	set_process(true)
 	assert(path_follow != null, "path_follow must be assigned")
 	_path_length = path_follow.get_parent().curve.get_baked_length()
 	path_follow.progress_ratio = 0.0
@@ -75,9 +78,8 @@ func _update_position_and_rotation():
 	velocity = Vector2.ZERO
 	move_and_slide()
 func _on_light_state_changed(is_dark: bool) -> void:
-	print("Received light_state_changed signal, is_dark: ", is_dark)
-	if is_dark:
-		if state == State.IDLE:
-			print("Light off - starting patrol")
-			state = State.MOVING_TO_SWITCH
-			_patrol_direction = 1  # ensure moving forward
+	print("BigEnemy _on_light_state_changed called, is_dark: ", is_dark)
+	if is_dark and state == State.IDLE:
+		print("Light off - starting patrol")
+		state = State.MOVING_TO_SWITCH
+		_patrol_direction = 1

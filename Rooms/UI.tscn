@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://dphewlvppuenk"]
+
+[ext_resource type="Script" uid="uid://b018mbgps0mw2" path="res://Rooms/key_card_hud.gd" id="1_nh1xc"]
+[ext_resource type="Script" uid="uid://dql6rf3jd3je3" path="res://scenes/ammo_count.gd" id="1_u20cm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nh1xc"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3pn1j"]
+shadow_color = Color(0.89411765, 0.07058824, 0.64705884, 0.6392157)
+
+[sub_resource type="Theme" id="Theme_w4usl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0uaw"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6k8q7"]
+shadow_size = 3
+shadow_color = Color(0.8921665, 0.07016479, 0.6476321, 0.64100003)
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -107.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nh1xc")
+
+[node name="KeyCardHUD" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 23.0
+text = "Keycards: 0/3"
+label_settings = SubResource("LabelSettings_3pn1j")
+script = ExtResource("1_nh1xc")
+
+[node name="Panel2" type="Panel" parent="."]
+z_index = 6
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -418.0
+offset_top = 198.0
+offset_right = -330.0
+offset_bottom = 221.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme = SubResource("Theme_w4usl")
+theme_override_styles/panel = SubResource("StyleBoxFlat_g0uaw")
+
+[node name="AmmoCount" type="Label" parent="Panel2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 86.0
+grow_vertical = 0
+size_flags_vertical = 8
+text = "16/16 Rnds"
+label_settings = SubResource("LabelSettings_6k8q7")
+horizontal_alignment = 2
+script = ExtResource("1_u20cm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 2.0
+offset_right = 422.0
+offset_bottom = 220.0

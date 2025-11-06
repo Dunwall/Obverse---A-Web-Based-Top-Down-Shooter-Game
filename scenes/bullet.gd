@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 				_hit.stream = HIT_WALL
 				Util.audio_play_varied_pitch_2d(_hit)
 		
-		elif collider is Enemy:
+		elif collider.is_in_group("enemies"):
 			print("Bullet hit Enemy: ", collider.name)
 			# One-shot kill - always deal 1 damage (which kills since hp = 1)
 			if collider.has_method("take_damage"):

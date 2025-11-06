@@ -23,6 +23,7 @@ SoundManager="*res://scenes/SoundManager.gd"
 gameover="*res://Rooms/gameover.tscn"
 BackgroundMusic="*res://scenes/BackgroundMusic.tscn"
 AudioManager="*res://asset/AudioManager.gd"
+Global="*res://scenes/global.gd"
 
 [display]
 
@@ -31,6 +32,15 @@ window/size/viewport_height=220
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+
+[file_customization]
+
+folder_colors={
+"res://Rooms/": "purple",
+"res://asset/": "green",
+"res://scenes/": "red",
+"res://sounds/": "teal"
+}
 
 [input]
 

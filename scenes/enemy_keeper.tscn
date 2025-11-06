@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5rb1c4mp3u8k"]
+
+[ext_resource type="Script" uid="uid://swy45e55q5gk" path="res://scenes/enemy_keeper.gd" id="1_gcoqu"]
+[ext_resource type="Texture2D" uid="uid://b8m8xwa3mlcr0" path="res://asset/Enemy/enemy3.png" id="2_hfii0"]
+[ext_resource type="Material" uid="uid://h0g0v1m7rvnc" path="res://blood_particles.tres" id="4_jh18k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8gf6"]
+size = Vector2(23, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_874nk"]
+atlas = ExtResource("2_hfii0")
+region = Rect2(768, 852, 54, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jh18k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_874nk")
+}],
+"loop": true,
+"name": &"death_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niyvy"]
+atlas = ExtResource("2_hfii0")
+region = Rect2(1242, 1189, 27, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oxav4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niyvy")
+}],
+"loop": true,
+"name": &"idle_animation",
+"speed": 5.0
+}]
+
+[node name="Enemy_Keeper" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_gcoqu")
+health = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_w8gf6")
+
+[node name="Death" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5.9604645e-08, 0)
+rotation = 3.1415925
+scale = Vector2(0.90264046, 1)
+sprite_frames = SubResource("SpriteFrames_jh18k")
+animation = &"death_animation"
+
+[node name="Idle" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oxav4")
+animation = &"idle_animation"
+frame_progress = 0.89006054
+
+[node name="BloodParticles" type="GPUParticles2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+emitting = false
+amount = 320
+lifetime = 0.58
+one_shot = true
+explosiveness = 0.56
+randomness = 0.47
+process_material = ExtResource("4_jh18k")

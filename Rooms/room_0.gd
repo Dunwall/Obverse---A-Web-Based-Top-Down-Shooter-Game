@@ -1,25 +1,34 @@
-extends Node2D
+#light turns off and enemy walks and turns on switch
 
+extends Node2D
+@onready var SceneTransition = $SceneTransition/AnimationPlayer
 @onready var dir_light: DirectionalLight2D = $DirectionalLight2D
-@onready var big_enemy_node = get_node("EnemyPath/PathFollow2D/bigEnemy")  # Make sure this path is correct
+@onready var big_enemy_node = get_node("EnemyPath_Switch/PathFollow2D/bigEnemy")  # Make sure this path is correct
+@onready var label = $Label  # optional: “Need more keycards!”
 var tween: Tween
 
 signal light_state_changed(is_dark: bool)
 
 func _ready():
 	await get_tree().process_frame  # ensures all children are ready
-	big_enemy_node = get_node("EnemyPath/PathFollow2D/bigEnemy")
-	connect("light_state_changed", Callable(big_enemy_node, "_on_light_state_changed"))
-	print("Connected signal to: ", big_enemy_node)
-
+	if big_enemy_node:
+		connect("light_state_changed", Callable(big_enemy_node, "_on_light_state_changed"))
+		print("Connected signal to: ", big_enemy_node)
+	else:
+		print("Error: big_enemy_node not found!")
 func activate(turn_on: bool):
 	print("activate called, turn_on = ", turn_on)
 	
 	# Prevent redundant toggles
-	var current_on := dir_light.energy < 0.4  # you can also track a boolean
-	if current_on == turn_on:
+	var light_is_on := dir_light.energy < 0.4
+	if light_is_on and not turn_on:
+		print("Turning light OFF")
+	elif not light_is_on and turn_on:
+		print("Turning light ON")
+	else:
 		print("Light already in desired state — skipping tween")
 		return
+
 
 	if tween and is_instance_valid(tween):
 		tween.kill()
@@ -41,3 +50,15 @@ func is_light_on() -> bool:
 # Return numeric energy so switches can debug/decide
 func get_light_energy() -> float:
 	return dir_light.energy
+
+
+func _on_end_transition_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		SceneTransition.play("fade_in")
+		await get_tree().create_timer(0.5).timeout
+		if Global.keycards_collected >= Global.required_keycards:
+			get_tree().change_scene_to_file("res://scenes/end.tscn")
+		else:
+			if label:
+				label.text = "You need more keycards!"
+			print("You need more keycards!")
